@@ -24,6 +24,7 @@ type Drawer interface {
 	SetFontSize(float64)
 	SetTextPos(int, int)
 	SetSize(int, int)
+	CalcTextWidth(float64, string)
 }
 
 // Params is parameters for NewDrawer function
