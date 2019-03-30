@@ -91,7 +91,7 @@ func (d *drawer) Draw(text string) (img *image.RGBA, err error) {
 	if d.autoFontSize {
 		d.FontSize = d.calcFontSize(text)
 	}
-	textWidth := d.calcTextWidth(d.FontSize, text)
+	textWidth := d.CalcTextWidth(d.FontSize, text)
 
 	if d.Font != nil {
 		c := freetype.NewContext()
@@ -198,7 +198,7 @@ func (d *drawer) calcFontSize(text string) (fontSize float64) {
 	const padding = 4
 	fontSizes := []float64{128, 64, 48, 32, 24, 18, 16, 14, 12}
 	for _, fontSize = range fontSizes {
-		textWidth := d.calcTextWidth(fontSize, text)
+		textWidth := d.CalcTextWidth(fontSize, text)
 		if textWidth < d.Width {
 			return
 		}
@@ -206,7 +206,7 @@ func (d *drawer) calcFontSize(text string) (fontSize float64) {
 	return
 }
 
-func (d *drawer) calcTextWidth(fontSize float64, text string) (textWidth int) {
+func (d *drawer) CalcTextWidth(fontSize float64, text string) (textWidth int) {
 	var face font.Face
 	if d.Font != nil {
 		opts := truetype.Options{}
